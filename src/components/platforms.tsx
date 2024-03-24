@@ -10,20 +10,19 @@ const gamePlatforms= ({onPlatforms} : { onPlatforms: (pIndex:(number | null)) =>
 
     const handleSelect = (evt: any) => {
         
-        
-        select?.childNodes.forEach((b, index) => {
+        select?.childNodes.forEach((item, index) => {
 
-            if(evt.target.value === b.value){
+            if(evt.target.value === item.textContent){
                 onPlatforms(index)
             }
         })
     }
 
     return (
-        <select onChange={handleSelect} className='px-5 py-3 mb-5 select rounded-md'>
+        <select onChange={handleSelect} className='px-5 py-3 mb-5 select rounded-md bg-slate-800 text-white'>
             <option hidden defaultValue="Platforms">Platforms</option>
-            {platforms?.results.slice(0,14).map((platform) => (
-                <option key={platform.id} defaultValue={platform.name}>{platform.name}</option>
+            {platforms?.results.slice(0,10).map((platform) => (
+                <option id={String(platform.id)} key={platform.id} defaultValue={platform.name}>{platform.name}</option>
             ))}
         </select>
     )
